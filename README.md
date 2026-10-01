@@ -353,15 +353,9 @@ $$\text{Composite Score} = (0.40 \times \text{TF-IDF Relevance}) + (0.60 \times 
 
 To prevent candidates from being penalized for skills irrelevant to the target role, skill coverage evaluates strictly against the $K$ skills required by the active Job Description:
 
-$$
-\text{Technical Skill Match}
-=
-\frac{|\mathrm{CandidateTech} \cap \mathrm{JDTech}|}
-{|\mathrm{JDTech}|}
-\times 100
-$$
+$$\text{Technical Skill Match} = \frac{|\mathrm{CandidateTech} \cap \mathrm{JDTech}|}{|\mathrm{JDTech}|} \times 100$$
 
-- If the JD requires **8 skills**, the denominator is **8** ($K=8$).
+- If the JD requires **8 skills**, the denominator is **8** ($K = 8$).
 - Candidate skills not present in $\mathrm{JDTech}$ do not inflate the score.
 
 ### 3. Decision Thresholds & Neutral Alignment Labels
