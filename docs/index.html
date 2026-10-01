@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Automated Resume Screening Tool — Professional Recruiter Decision-Support Platform with Batch Screening Dashboard and Live ATS Checker." />
+  <title>Resume Screening &amp; ATS Platform</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Pinned CDN Dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.8.0/mammoth.browser.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       HEADER RIBBON
+  ════════════════════════════════════════════════════════════════ -->
+  <header class="header-ribbon" role="banner">
+    <div class="header-inner">
+      <div class="header-brand">
+        <h1 class="header-title">
+          <span class="header-icon" aria-hidden="true">📊</span>
+          Resume Screening &amp; ATS Platform
+        </h1>
+        <p class="header-subtitle" id="header-role-title">Recruiter Decision-Support System</p>
+      </div>
+      <div class="header-meta">
+        <span class="meta-chip" id="header-department">Data Platform Engineering</span>
+        <span class="meta-chip" id="header-timestamp">—</span>
+        <span class="meta-chip meta-chip--accent" id="header-pipeline-version">v1.0.0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       TAB NAVIGATION BAR
+  ════════════════════════════════════════════════════════════════ -->
+  <nav class="tab-nav" role="tablist" aria-label="Main application tabs">
+    <div class="tab-nav-inner" style="justify-content: center;">
+      <button class="tab-btn active" id="tab-btn-dashboard" role="tab" aria-selected="true" aria-controls="tab-panel-dashboard">
+        <span class="tab-icon" aria-hidden="true">📈</span> Screening Dashboard
+      </button>
+      <button class="tab-btn" id="tab-btn-ats" role="tab" aria-selected="false" aria-controls="tab-panel-ats">
+        <span class="tab-icon" aria-hidden="true">⚡</span> Live ATS Checker
+      </button>
+    </div>
+  </nav>
+
+  <main class="main-content" role="main">
+
+    <!-- ═══════════════════════════════════════════════════════════
+         TAB 1: SCREENING DASHBOARD
+    ════════════════════════════════════════════════════════════ -->
+    <div class="tab-panel active" id="tab-panel-dashboard" role="tabpanel" aria-labelledby="tab-btn-dashboard">
+      
+      <!-- Section 1: Screening Overview -->
+      <section class="section" id="screening-overview" aria-labelledby="section-overview-heading">
+        <div class="section-title-wrap">
+          <h2 class="section-heading" id="section-overview-heading">Candidate Pool Screening Overview</h2>
+          <p class="section-description">
+            Batch screening analytics evaluating candidate resumes against the <strong>Senior Python &amp; Data Engineer</strong> benchmark requisition.
+          </p>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-bar" role="region" aria-label="Key performance indicators">
+          <div class="kpi-card" id="kpi-total">
+            <span class="kpi-label">Total Screened</span>
+            <span class="kpi-value" id="kpi-total-value">—</span>
+            <span class="kpi-sublabel">candidates</span>
+          </div>
+          <div class="kpi-card kpi-card--shortlist" id="kpi-shortlist">
+            <span class="kpi-label">Shortlist</span>
+            <span class="kpi-value" id="kpi-shortlist-value">—</span>
+            <span class="kpi-sublabel">High Match</span>
+          </div>
+          <div class="kpi-card kpi-card--review" id="kpi-review">
+            <span class="kpi-label">Review</span>
+            <span class="kpi-value" id="kpi-review-value">—</span>
+            <span class="kpi-sublabel">Moderate Match</span>
+          </div>
+          <div class="kpi-card kpi-card--lowmatch" id="kpi-low">
+            <span class="kpi-label">Low Match</span>
+            <span class="kpi-value" id="kpi-low-value">—</span>
+            <span class="kpi-sublabel">Low Match</span>
+          </div>
+          <div class="kpi-card" id="kpi-avg">
+            <span class="kpi-label">Avg. Score</span>
+            <span class="kpi-value" id="kpi-avg-value">—</span>
+            <span class="kpi-sublabel">composite %</span>
+          </div>
+        </div>
+
+        <!-- Candidate Leaderboard -->
+        <div class="leaderboard-wrapper">
+          <div class="leaderboard-controls">
+            <div class="search-box">
+              <label for="search-input" class="visually-hidden">Search candidates</label>
+              <input
+                type="search"
+                id="search-input"
+                class="search-input"
+                placeholder="Search candidates by name…"
+                aria-label="Search candidates by name"
+              />
+            </div>
+            <div class="filter-box">
+              <label for="signal-filter" class="visually-hidden">Filter by signal</label>
+              <select id="signal-filter" class="signal-filter" aria-label="Filter candidates by screening signal">
+                <option value="ALL">All Signals</option>
+                <option value="SHORTLIST">Shortlist</option>
+                <option value="REVIEW">Review</option>
+                <option value="LOW MATCH">Low Match</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-scroll">
+            <table class="leaderboard-table" id="leaderboard-table" aria-label="Candidate leaderboard ranked by composite score">
+              <thead>
+                <tr>
+                  <th scope="col" data-sort="rank" class="sortable" aria-sort="ascending">Rank</th>
+                  <th scope="col" data-sort="candidate_name" class="sortable">Candidate</th>
+                  <th scope="col" data-sort="format" class="sortable">Format</th>
+                  <th scope="col" data-sort="composite_score" class="sortable">Composite Score</th>
+                  <th scope="col" data-sort="skill_match_percentage" class="sortable">Skill Match</th>
+                  <th scope="col" data-sort="tfidf_percentage" class="sortable">TF-IDF</th>
+                  <th scope="col" data-sort="signal" class="sortable">Signal</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body">
+                <!-- Rows injected by app.js -->
+              </tbody>
+            </table>
+          </div>
+          <p class="table-footer" id="table-footer">Showing 0 of 0 candidates</p>
+        </div>
+      </section>
+
+      <!-- Section 3: Screening Insights & Dataset EDA -->
+      <section class="section" id="screening-insights" aria-labelledby="section-insights-heading">
+        <h2 class="section-heading" id="section-insights-heading">Screening Insights &amp; Dataset EDA</h2>
+        <p class="section-description">
+          The top two charts reflect the <strong>10-candidate screening cohort</strong>.
+          The bottom two charts summarize the <strong>10,000-record source dataset</strong> used to derive benchmark personas.
+        </p>
+
+        <div class="chart-grid">
+          <!-- Chart 1: Skill Distribution (Screening Cohort) -->
+          <div class="chart-card" id="chart-card-skills">
+            <h3 class="chart-title">Candidate-Pool Skill Distribution</h3>
+            <p class="chart-subtitle">How many of the 10 screened candidates matched each required JD skill</p>
+            <div class="chart-container">
+              <canvas id="chart-skill-distribution" aria-label="Bar chart showing skill distribution across screened candidates"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 2: Candidate Composite Scores (Screening Cohort) -->
+          <div class="chart-card" id="chart-card-scores">
+            <h3 class="chart-title">Candidate Composite Scores</h3>
+            <p class="chart-subtitle">Composite score comparison across screened candidates</p>
+            <div class="chart-container">
+              <canvas id="chart-score-distribution" aria-label="Bar chart showing composite score comparison across screened candidates"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 3: EDA — Experience Distribution (Source Dataset) -->
+          <div class="chart-card" id="chart-card-experience">
+            <h3 class="chart-title">
+              <span class="eda-badge">EDA</span>
+              Source Dataset Experience Distribution
+            </h3>
+            <p class="chart-subtitle">Experience-band distribution across 10,000 source dataset records</p>
+            <div class="chart-container">
+              <canvas id="chart-experience" aria-label="Horizontal bar chart showing experience-band distribution from source dataset"></canvas>
+            </div>
+          </div>
+
+          <!-- Chart 4: EDA — Category Distribution (Source Dataset) -->
+          <div class="chart-card" id="chart-card-category">
+            <h3 class="chart-title">
+              <span class="eda-badge">EDA</span>
+              Source Dataset Category Distribution
+            </h3>
+            <p class="chart-subtitle">Job category breakdown across 10,000 source dataset records</p>
+            <div class="chart-container">
+              <canvas id="chart-category" aria-label="Horizontal bar chart showing job category distribution from source dataset"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         TAB 2: LIVE ATS CHECKER
+    ════════════════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="tab-panel-ats" role="tabpanel" aria-labelledby="tab-btn-ats">
+      
+      <section class="section" id="ats-checker-section">
+        <div class="section-title-wrap">
+          <h2 class="section-heading">Live ATS Resume Screener</h2>
+          <p class="section-description">
+            Evaluate an individual resume against a specific Job Description using explainable hybrid scoring (40% TF-IDF Textual Relevance + 60% Technical Skill Match).
+          </p>
+        </div>
+
+        <div class="ats-container">
+          <!-- ATS Input Form -->
+          <div class="ats-form-card">
+            <h3 class="ats-card-title">Requisition &amp; Candidate Information</h3>
+            
+            <div class="form-row-grid">
+              <div class="form-group">
+                <label for="ats-company" class="form-label">
+                  Company Name <span class="required-star">*</span>
+                  <span class="field-hint">(Screening context only)</span>
+                </label>
+                <input
+                  type="text"
+                  id="ats-company"
+                  class="form-input"
+                  placeholder="e.g. Acme Cloud Corp"
+                  autocomplete="organization"
+                />
+              </div>
+              <div class="form-group">
+                <label for="ats-role" class="form-label">
+                  Job Role <span class="required-star">*</span>
+                  <span class="field-hint">(Screening context only)</span>
+                </label>
+                <input
+                  type="text"
+                  id="ats-role"
+                  class="form-input"
+                  placeholder="e.g. Senior Python &amp; Data Engineer"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label-with-action">
+                <label for="ats-jd" class="form-label">
+                  Job Description <span class="required-star">*</span>
+                </label>
+                <button type="button" id="ats-load-sample-jd" class="btn-text-link">Load Sample JD</button>
+              </div>
+              <textarea
+                id="ats-jd"
+                class="form-textarea"
+                rows="6"
+                placeholder="Paste the complete Job Description text here including responsibilities and technical requirements…"
+              ></textarea>
+            </div>
+
+            <!-- Resume Input Options -->
+            <div class="form-group">
+              <label class="form-label">
+                Candidate Resume <span class="required-star">*</span>
+              </label>
+              
+              <div class="resume-source-toggle" role="tablist" aria-label="Resume input mode">
+                <button type="button" class="resume-toggle-btn active" id="toggle-upload" role="tab" aria-selected="true">
+                  📁 Upload Document (.pdf, .docx, .txt)
+                </button>
+                <button type="button" class="resume-toggle-btn" id="toggle-paste" role="tab" aria-selected="false">
+                  📝 Paste Resume Text
+                </button>
+              </div>
+
+              <!-- Upload Sub-panel -->
+              <div class="resume-input-panel active" id="panel-upload">
+                <div class="file-dropzone" id="file-dropzone">
+                  <input
+                    type="file"
+                    id="ats-resume-file"
+                    class="file-input-hidden"
+                    accept=".pdf,.docx,.txt"
+                  />
+                  <div class="dropzone-content">
+                    <span class="dropzone-icon" aria-hidden="true">📄</span>
+                    <p class="dropzone-text">Click to choose a file or drag &amp; drop here</p>
+                    <p class="dropzone-hint">Supported formats: PDF, DOCX, TXT (Max 10 MB)</p>
+                    <p class="selected-file-name" id="selected-file-name"></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Paste Sub-panel -->
+              <div class="resume-input-panel" id="panel-paste">
+                <div class="form-label-with-action">
+                  <span></span>
+                  <button type="button" id="ats-load-sample-resume" class="btn-text-link">Load Sample Resume</button>
+                </div>
+                <textarea
+                  id="ats-resume-text"
+                  class="form-textarea"
+                  rows="8"
+                  placeholder="Paste the candidate's complete resume text here…"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Validation Error Alert Container -->
+            <div class="ats-alert-box ats-alert-box--error" id="ats-error-box" style="display: none;" role="alert">
+              <span class="alert-icon" aria-hidden="true">⚠️</span>
+              <div class="alert-text" id="ats-error-msg">Please correct the highlighted fields.</div>
+            </div>
+
+            <!-- Primary CTA -->
+            <div class="form-actions">
+              <button type="button" id="ats-reset-btn" class="btn-secondary">
+                ↺ Reset Form
+              </button>
+              <button type="button" id="ats-analyze-btn" class="btn-primary-cta">
+                <span class="btn-cta-icon" aria-hidden="true">🔍</span> ANALYZE RESUME
+              </button>
+            </div>
+          </div>
+
+          <!-- ATS Results Display (Initially Hidden) -->
+          <div class="ats-results-wrapper" id="ats-results" style="display: none;">
+            
+            <!-- Screening Context Ribbon -->
+            <div class="ats-context-banner">
+              <div class="context-item">
+                <span class="context-label">Target Organization:</span>
+                <span class="context-value" id="res-company">—</span>
+              </div>
+              <div class="context-item">
+                <span class="context-label">Requisition:</span>
+                <span class="context-value" id="res-role">—</span>
+              </div>
+              <div class="context-item">
+                <span class="context-label">Candidate Document:</span>
+                <span class="context-value" id="res-source">—</span>
+              </div>
+            </div>
+
+            <!-- Hero Score Card -->
+            <div class="ats-score-hero-card">
+              <div class="hero-score-left">
+                <span class="hero-score-badge-label">ATS Match Score</span>
+                <div class="hero-score-val" id="res-composite-score">0.0%</div>
+                <div class="hero-signal-pill" id="res-signal-pill">—</div>
+                <p class="hero-signal-desc" id="res-signal-desc">—</p>
+              </div>
+              <div class="hero-score-right">
+                <h4 class="hero-breakdown-heading">Decision-Support Explainability</h4>
+                <p class="hero-breakdown-sub">
+                  Calculated using <strong>40% TF-IDF Textual Relevance</strong> + <strong>60% Technical Skill Match</strong> against extracted JD requirements.
+                </p>
+                <div class="hero-metric-rows">
+                  <div class="hero-metric-row">
+                    <span class="hero-m-label">Technical Skill Match (60% weight):</span>
+                    <div class="hero-m-bar-wrap">
+                      <div class="hero-m-bar hero-m-bar--skill" id="res-skill-bar" style="width: 0%"></div>
+                    </div>
+                    <span class="hero-m-val" id="res-skill-val">0.0%</span>
+                  </div>
+                  <div class="hero-metric-row">
+                    <span class="hero-m-label">TF-IDF Relevance (40% weight):</span>
+                    <div class="hero-m-bar-wrap">
+                      <div class="hero-m-bar hero-m-bar--tfidf" id="res-tfidf-bar" style="width: 0%"></div>
+                    </div>
+                    <span class="hero-m-val" id="res-tfidf-val">0.0%</span>
+                  </div>
+                </div>
+                <p class="hero-formula-tag" id="res-formula-tag">
+                  Score = (0.40 × 0.0%) + (0.60 × 0.0%) = 0.0%
+                </p>
+                <p class="baseline-disclaimer">
+                  <em>Decision-support baselines: Shortlist ≥70.0% | Review 50.0–69.9% | Low Match &lt;50.0%. Not a universal hiring standard.</em>
+                </p>
+              </div>
+            </div>
+
+            <!-- Skills & Terminology Decomposition Grid -->
+            <div class="ats-details-grid">
+              
+              <!-- Matched Required Skills -->
+              <div class="ats-detail-card">
+                <h4 class="ats-detail-card-title">
+                  <span class="chip-dot chip-dot--matched"></span>
+                  Matched Required Technical Skills
+                  <span class="skill-count-badge" id="res-matched-count">0/0</span>
+                </h4>
+                <p class="ats-detail-card-sub">Technical skills required by the Job Description that were found in the resume.</p>
+                <div class="skill-chips" id="res-matched-skills">
+                  <span class="empty-hint">None detected</span>
+                </div>
+              </div>
+
+              <!-- Missing Required Skills -->
+              <div class="ats-detail-card">
+                <h4 class="ats-detail-card-title">
+                  <span class="chip-dot chip-dot--missing"></span>
+                  Missing Required Technical Skills
+                  <span class="skill-count-badge" id="res-missing-count">0</span>
+                </h4>
+                <p class="ats-detail-card-sub">Technical skills required by the Job Description that were not found in the resume.</p>
+                <div class="skill-chips skill-chips--missing" id="res-missing-skills">
+                  <span class="empty-hint">None</span>
+                </div>
+              </div>
+
+              <!-- Detected Soft Skills (Informational) -->
+              <div class="ats-detail-card">
+                <h4 class="ats-detail-card-title">
+                  <span class="chip-dot chip-dot--soft"></span>
+                  Detected Soft Skills
+                  <span class="info-tag">Informational — Excluded from Score</span>
+                </h4>
+                <p class="ats-detail-card-sub">Interpersonal competencies recognized in the document text.</p>
+                <div class="skill-chips skill-chips--soft" id="res-soft-skills">
+                  <span class="empty-hint">None detected</span>
+                </div>
+              </div>
+
+              <!-- Top Shared Lexical Terms -->
+              <div class="ats-detail-card">
+                <h4 class="ats-detail-card-title">
+                  <span class="chip-dot chip-dot--terms"></span>
+                  Top Shared TF-IDF Terms
+                </h4>
+                <p class="ats-detail-card-sub">Most influential shared n-grams driving textual similarity.</p>
+                <div class="skill-chips skill-chips--terms" id="res-shared-terms">
+                  <span class="empty-hint">None</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION 2: CANDIDATE INTELLIGENCE DRAWER (BATCH DASHBOARD)
+  ════════════════════════════════════════════════════════════ -->
+  <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+  <aside
+    class="drawer"
+    id="candidate-drawer"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="drawer-title"
+    aria-hidden="true"
+  >
+    <div class="drawer-header">
+      <h2 class="drawer-title" id="drawer-title">Candidate Intelligence</h2>
+      <button class="drawer-close" id="drawer-close" aria-label="Close candidate detail panel">&times;</button>
+    </div>
+
+    <div class="drawer-body" id="drawer-body">
+      <!-- Candidate Name & Signal -->
+      <div class="drawer-candidate-header">
+        <h3 class="drawer-candidate-name" id="drawer-candidate-name">—</h3>
+        <span class="signal-badge" id="drawer-signal">—</span>
+      </div>
+
+      <!-- Score Decomposition -->
+      <div class="drawer-score-section">
+        <h4 class="drawer-section-title">Score Decomposition</h4>
+        <div class="score-breakdown">
+          <div class="score-row">
+            <span class="score-label">TF-IDF Textual Relevance</span>
+            <div class="score-bar-wrapper">
+              <div class="score-bar score-bar--tfidf" id="drawer-tfidf-bar" style="width: 0%"></div>
+            </div>
+            <span class="score-value" id="drawer-tfidf-value">0%</span>
+          </div>
+          <div class="score-row">
+            <span class="score-label">Skill Match</span>
+            <div class="score-bar-wrapper">
+              <div class="score-bar score-bar--skill" id="drawer-skill-bar" style="width: 0%"></div>
+            </div>
+            <span class="score-value" id="drawer-skill-value">0%</span>
+          </div>
+          <div class="score-formula">
+            <span class="formula-text">
+              Composite = (0.40 × TF-IDF) + (0.60 × Skill Match)
+            </span>
+          </div>
+          <div class="score-composite-row">
+            <span class="composite-label">Composite Score</span>
+            <span class="composite-value" id="drawer-composite-value">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Matched Skills -->
+      <div class="drawer-skills-section">
+        <h4 class="drawer-section-title">Matched Skills <span class="skill-count" id="drawer-matched-count">(0/8)</span></h4>
+        <div class="skill-chips" id="drawer-matched-skills">
+          <!-- Chips injected by app.js -->
+        </div>
+      </div>
+
+      <!-- Missing Skills -->
+      <div class="drawer-skills-section">
+        <h4 class="drawer-section-title">Missing Skills</h4>
+        <div class="skill-chips skill-chips--missing" id="drawer-missing-skills">
+          <!-- Chips injected by app.js -->
+        </div>
+      </div>
+
+      <!-- Soft Skills (Informational) -->
+      <div class="drawer-skills-section" id="drawer-soft-section">
+        <h4 class="drawer-section-title">
+          Soft Skills
+          <span class="info-tag">Informational — Not Included in Score</span>
+        </h4>
+        <div class="skill-chips skill-chips--soft" id="drawer-soft-skills">
+          <!-- Chips injected by app.js -->
+        </div>
+      </div>
+
+      <!-- Top Shared Terms -->
+      <div class="drawer-skills-section">
+        <h4 class="drawer-section-title">Top Shared TF-IDF Terms</h4>
+        <div class="skill-chips skill-chips--terms" id="drawer-shared-terms">
+          <!-- Chips injected by app.js -->
+        </div>
+      </div>
+
+      <!-- File Info -->
+      <div class="drawer-meta">
+        <div class="drawer-meta-row">
+          <span class="meta-label">Source File</span>
+          <span class="meta-value" id="drawer-file-name">—</span>
+        </div>
+        <div class="drawer-meta-row">
+          <span class="meta-label">Format</span>
+          <span class="meta-value" id="drawer-format">—</span>
+        </div>
+        <div class="drawer-meta-row">
+          <span class="meta-label">Character Count</span>
+          <span class="meta-value" id="drawer-char-count">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <p>Automated Resume Screening Tool &bull; Explainable Recruiter Decision-Support System &bull; Hybrid Lexical TF-IDF &amp; Boundary-Safe Skill Matching &bull; Built By Girish Shenoy</p>
+  </footer>
+
+</body>
+</html>

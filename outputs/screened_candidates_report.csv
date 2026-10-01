@@ -1,0 +1,11 @@
+Rank,Candidate Name,File Name,Format,Composite Score (%),Signal,Alignment Label,Skill Match (%),TF-IDF Relevance (%),Detected JD Skills,Missing Skills,Informational Soft Skills
+1,Alex Morgan,candidate_1_alex_senior_python.pdf,PDF,75.91,SHORTLIST,High Match,100.0,39.78,Docker; FastAPI; Git; Kubernetes; Pandas; PostgreSQL; Python; SQL,,
+2,Priya Patel,candidate_2_priya_data_analyst.docx,DOCX,59.69,REVIEW,Moderate Match,87.5,17.97,Docker; FastAPI; Git; Pandas; PostgreSQL; Python; SQL,Kubernetes,
+3,Marcus Vance,candidate_5_marcus_backend_dev.pdf,PDF,50.58,REVIEW,Moderate Match,75.0,13.96,Docker; Git; Kubernetes; PostgreSQL; Python; SQL,FastAPI; Pandas,
+4,Elena Rostova,candidate_6_elena_fullstack.txt,TXT,43.45,LOW MATCH,Low Match,62.5,14.88,Docker; FastAPI; Git; Python; SQL,Kubernetes; Pandas; PostgreSQL,
+5,David Kim,candidate_3_david_ml_intern.pdf,PDF,42.2,LOW MATCH,Low Match,62.5,11.76,Docker; Git; Pandas; Python; SQL,FastAPI; Kubernetes; PostgreSQL,
+6,Carlos Gomez,candidate_8_carlos_career_changer.txt,TXT,17.52,LOW MATCH,Low Match,25.0,6.3,Python; SQL,Docker; FastAPI; Git; Kubernetes; Pandas; PostgreSQL,Communication; Problem Solving
+7,Aisha Khan,candidate_9_aisha_fresh_graduate.docx,DOCX,10.24,LOW MATCH,Low Match,12.5,6.84,Git,Docker; FastAPI; Kubernetes; Pandas; PostgreSQL; Python; SQL,
+8,Emily Chen,candidate_4_emily_bi_analyst.docx,DOCX,9.9,LOW MATCH,Low Match,12.5,5.99,SQL,Docker; FastAPI; Git; Kubernetes; Pandas; PostgreSQL; Python,
+9,Jason Miller,candidate_10_jason_mechanical_eng.pdf,PDF,1.66,LOW MATCH,Low Match,0.0,4.14,,Docker; FastAPI; Git; Kubernetes; Pandas; PostgreSQL; Python; SQL,Teamwork
+10,Sarah Jenkins,candidate_7_sarah_frontend_dev.docx,DOCX,0.86,LOW MATCH,Low Match,0.0,2.16,,Docker; FastAPI; Git; Kubernetes; Pandas; PostgreSQL; Python; SQL,

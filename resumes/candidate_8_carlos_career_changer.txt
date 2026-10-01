@@ -1,0 +1,21 @@
+Carlos Gomez
+carlos.gomez.transition@example.com | +1 (555) 901-2345 | Austin, TX
+----------------------------------------------------------------------
+
+PROFESSIONAL SUMMARY
+----------------------------------------------------------------------
+Motivated career changer transitioning from communications to technology following intensive coursework in Python programming and relational databases. Strong interpersonal abilities, analytical curiosity, and commitment to learning.
+
+TECHNICAL SKILLS & COMPETENCIES
+----------------------------------------------------------------------
+Python, SQL, Excel, Communication, Problem Solving
+
+PROFESSIONAL EXPERIENCE
+----------------------------------------------------------------------
+Junior Operations & Data Assistant - Beacon Communications (2023 - Present)
+  * Wrote basic Python automation scripts to parse internal CSV reports and log records.
+  * Queried organizational databases using basic SQL select statements and performed reconciliations in Excel.
+
+EDUCATION
+----------------------------------------------------------------------
+Certificate in Applied Programming, DevAcademy; BA in Communications

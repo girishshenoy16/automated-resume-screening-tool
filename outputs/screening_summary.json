@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-09-20T07:41:31.588854+00:00",
+  "total_screened": 10,
+  "job_title": "Senior Python & Data Engineer",
+  "required_skills_count": 8,
+  "required_skills": [
+    "Docker",
+    "FastAPI",
+    "Git",
+    "Kubernetes",
+    "Pandas",
+    "PostgreSQL",
+    "Python",
+    "SQL"
+  ],
+  "weights": {
+    "tfidf_weight": 0.4,
+    "skill_weight": 0.6
+  },
+  "thresholds": {
+    "shortlist_threshold": 70.0,
+    "review_threshold": 50.0
+  },
+  "decision_counts": {
+    "SHORTLIST": 1,
+    "REVIEW": 2,
+    "LOW MATCH": 7
+  },
+  "decision_percentages": {
+    "SHORTLIST": 10.0,
+    "REVIEW": 20.0,
+    "LOW MATCH": 70.0
+  },
+  "averages": {
+    "average_composite_score": 31.2,
+    "average_skill_score": 43.75,
+    "average_tfidf_score": 12.38
+  },
+  "top_candidate": {
+    "candidate_id": "cand_02",
+    "candidate_name": "Alex Morgan",
+    "file_name": "candidate_1_alex_senior_python.pdf",
+    "format": "PDF",
+    "composite_score": 75.91,
+    "signal": "SHORTLIST",
+    "alignment_label": "High Match",
+    "skill_match_percentage": 100.0,
+    "tfidf_percentage": 39.78,
+    "matched_skills": [
+      "Docker",
+      "FastAPI",
+      "Git",
+      "Kubernetes",
+      "Pandas",
+      "PostgreSQL",
+      "Python",
+      "SQL"
+    ],
+    "missing_skills": [],
+    "all_detected_skills": [
+      "CI/CD",
+      "Docker",
+      "FastAPI",
+      "Git",
+      "Kubernetes",
+      "Pandas",
+      "PostgreSQL",
+      "Python",
+      "Redis",
+      "SQL"
+    ],
+    "soft_skills": [],
+    "top_shared_terms": [
+      "data",
+      "python",
+      "using",
+      "postgresql",
+      "services"
+    ],
+    "character_count": 1781,
+    "rank": 1
+  }
+}

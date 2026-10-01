@@ -1,0 +1,22 @@
+Elena Rostova
+elena.rostova.fs@example.com | +1 (555) 789-0123 | Boston, MA
+----------------------------------------------------------------------
+
+PROFESSIONAL SUMMARY
+----------------------------------------------------------------------
+Versatile Full Stack Developer with 5 years of full lifecycle software engineering experience across frontend web technologies and backend services. Proficient in Python, building REST APIs with FastAPI, SQL database operations, Docker containerization, and Git.
+
+TECHNICAL SKILLS & COMPETENCIES
+----------------------------------------------------------------------
+Python, SQL, Docker, Git, FastAPI, JavaScript, Node.js, HTML/CSS
+
+PROFESSIONAL EXPERIENCE
+----------------------------------------------------------------------
+Full Stack Software Engineer - BrightCore Technologies (2021 - Present)
+  * Built backend microservices and REST APIs using Python, FastAPI, and relational SQL databases.
+  * Constructed responsive user interfaces with JavaScript and HTML/CSS.
+  * Containerized web application components using Docker and managed code reviews using Git.
+
+EDUCATION
+----------------------------------------------------------------------
+Bachelor of Science in Computer Science, State University
