@@ -28,7 +28,7 @@ Benchmarked on the **Kaggle AI Resume Analyzer Dataset (10,000 resume records)**
 
 ## Live Demo
 
-[![Resume Screening & ATS Platform Dashboard](outputs/dashboard_image.png)]
+![Resume Screening & ATS Platform Dashboard](outputs/dashboard_image.png)
 
 *Executive Dashboard — Interactive Candidate Leaderboard, Cohort Analytics & Live In-Browser ATS Engine*
 
@@ -252,15 +252,6 @@ graph TB
 git clone https://github.com/girishshenoy16/automated-resume-screening-tool.git
 cd automated-resume-screening-tool
 
-# Start static HTTP server from docs/
-python -m http.server 8000 --directory docs
-
-# Open browser at http://localhost:8000
-```
-
-### Option 2: Full Pipeline Execution
-
-```bash
 # Clone repository
 git clone https://github.com/girishshenoy16/automated-resume-screening-tool.git
 cd automated-resume-screening-tool
@@ -282,6 +273,7 @@ pytest -v
 
 # Launch local dashboard server
 python -m http.server 8000 --directory docs
+# Open browser at http://localhost:8000
 ```
 
 ---
