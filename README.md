@@ -243,9 +243,9 @@ graph TB
 
 ---
 
-## Installation & Quickstart
+## Installation 
 
-### Option 1: Quick Start (Dashboard Only)
+### Quick Start 
 
 ```bash
 # Clone repository
