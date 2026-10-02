@@ -1,0 +1,529 @@
+{
+  "metadata": {
+    "generated_at": "2026-09-20T07:41:31.589860+00:00",
+    "pipeline_version": "1.0.0",
+    "tool_name": "Automated Resume Screening Tool",
+    "architecture": "Hybrid Lexical TF-IDF & Boundary-Safe Skill Matching Engine"
+  },
+  "job": {
+    "title": "Senior Python & Data Engineer",
+    "department": "Data Platform Engineering",
+    "required_skills_count": 8,
+    "required_skills": [
+      "Docker",
+      "FastAPI",
+      "Git",
+      "Kubernetes",
+      "Pandas",
+      "PostgreSQL",
+      "Python",
+      "SQL"
+    ]
+  },
+  "summary": {
+    "total_candidates": 10,
+    "shortlist_count": 1,
+    "review_count": 2,
+    "low_match_count": 7,
+    "average_composite_score": 31.2,
+    "shortlist_percentage": 10.0
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand_02",
+      "candidate_name": "Alex Morgan",
+      "file_name": "candidate_1_alex_senior_python.pdf",
+      "format": "PDF",
+      "composite_score": 75.91,
+      "signal": "SHORTLIST",
+      "alignment_label": "High Match",
+      "skill_match_percentage": 100.0,
+      "tfidf_percentage": 39.78,
+      "matched_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL",
+        "Python",
+        "SQL"
+      ],
+      "missing_skills": [],
+      "all_detected_skills": [
+        "CI/CD",
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL",
+        "Python",
+        "Redis",
+        "SQL"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "data",
+        "python",
+        "using",
+        "postgresql",
+        "services"
+      ],
+      "character_count": 1781,
+      "rank": 1
+    },
+    {
+      "candidate_id": "cand_03",
+      "candidate_name": "Priya Patel",
+      "file_name": "candidate_2_priya_data_analyst.docx",
+      "format": "DOCX",
+      "composite_score": 59.69,
+      "signal": "REVIEW",
+      "alignment_label": "Moderate Match",
+      "skill_match_percentage": 87.5,
+      "tfidf_percentage": 17.97,
+      "matched_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Pandas",
+        "PostgreSQL",
+        "Python",
+        "SQL"
+      ],
+      "missing_skills": [
+        "Kubernetes"
+      ],
+      "all_detected_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Pandas",
+        "PostgreSQL",
+        "Power BI",
+        "Python",
+        "SQL",
+        "Statistics"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "data",
+        "python",
+        "using",
+        "pipelines",
+        "sql"
+      ],
+      "character_count": 1337,
+      "rank": 2
+    },
+    {
+      "candidate_id": "cand_06",
+      "candidate_name": "Marcus Vance",
+      "file_name": "candidate_5_marcus_backend_dev.pdf",
+      "format": "PDF",
+      "composite_score": 50.58,
+      "signal": "REVIEW",
+      "alignment_label": "Moderate Match",
+      "skill_match_percentage": 75.0,
+      "tfidf_percentage": 13.96,
+      "matched_skills": [
+        "Docker",
+        "Git",
+        "Kubernetes",
+        "PostgreSQL",
+        "Python",
+        "SQL"
+      ],
+      "missing_skills": [
+        "FastAPI",
+        "Pandas"
+      ],
+      "all_detected_skills": [
+        "Docker",
+        "Flask",
+        "Git",
+        "Kubernetes",
+        "Linux",
+        "PostgreSQL",
+        "Python",
+        "Redis",
+        "SQL"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "python",
+        "engineering",
+        "backend",
+        "sql",
+        "postgresql"
+      ],
+      "character_count": 1018,
+      "rank": 3
+    },
+    {
+      "candidate_id": "cand_07",
+      "candidate_name": "Elena Rostova",
+      "file_name": "candidate_6_elena_fullstack.txt",
+      "format": "TXT",
+      "composite_score": 43.45,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 62.5,
+      "tfidf_percentage": 14.88,
+      "matched_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Python",
+        "SQL"
+      ],
+      "missing_skills": [
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL"
+      ],
+      "all_detected_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "HTML/CSS",
+        "JavaScript",
+        "Node.js",
+        "Python",
+        "SQL"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "python",
+        "using",
+        "sql",
+        "git",
+        "fastapi"
+      ],
+      "character_count": 1245,
+      "rank": 4
+    },
+    {
+      "candidate_id": "cand_04",
+      "candidate_name": "David Kim",
+      "file_name": "candidate_3_david_ml_intern.pdf",
+      "format": "PDF",
+      "composite_score": 42.2,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 62.5,
+      "tfidf_percentage": 11.76,
+      "matched_skills": [
+        "Docker",
+        "Git",
+        "Pandas",
+        "Python",
+        "SQL"
+      ],
+      "missing_skills": [
+        "FastAPI",
+        "Kubernetes",
+        "PostgreSQL"
+      ],
+      "all_detected_skills": [
+        "Docker",
+        "Git",
+        "Machine Learning",
+        "Pandas",
+        "PyTorch",
+        "Python",
+        "SQL",
+        "TensorFlow"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "using",
+        "data",
+        "python",
+        "sql",
+        "pandas"
+      ],
+      "character_count": 1043,
+      "rank": 5
+    },
+    {
+      "candidate_id": "cand_09",
+      "candidate_name": "Carlos Gomez",
+      "file_name": "candidate_8_carlos_career_changer.txt",
+      "format": "TXT",
+      "composite_score": 17.52,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 25.0,
+      "tfidf_percentage": 6.3,
+      "matched_skills": [
+        "Python",
+        "SQL"
+      ],
+      "missing_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL"
+      ],
+      "all_detected_skills": [
+        "Excel",
+        "Python",
+        "SQL"
+      ],
+      "soft_skills": [
+        "Communication",
+        "Problem Solving"
+      ],
+      "top_shared_terms": [
+        "python",
+        "data",
+        "sql",
+        "using",
+        "relational"
+      ],
+      "character_count": 1157,
+      "rank": 6
+    },
+    {
+      "candidate_id": "cand_10",
+      "candidate_name": "Aisha Khan",
+      "file_name": "candidate_9_aisha_fresh_graduate.docx",
+      "format": "DOCX",
+      "composite_score": 10.24,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 12.5,
+      "tfidf_percentage": 6.84,
+      "matched_skills": [
+        "Git"
+      ],
+      "missing_skills": [
+        "Docker",
+        "FastAPI",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL",
+        "Python",
+        "SQL"
+      ],
+      "all_detected_skills": [
+        "C++",
+        "Git",
+        "Java",
+        "Linux"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "data",
+        "git",
+        "engineering",
+        "science",
+        "computer science"
+      ],
+      "character_count": 755,
+      "rank": 7
+    },
+    {
+      "candidate_id": "cand_05",
+      "candidate_name": "Emily Chen",
+      "file_name": "candidate_4_emily_bi_analyst.docx",
+      "format": "DOCX",
+      "composite_score": 9.9,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 12.5,
+      "tfidf_percentage": 5.99,
+      "matched_skills": [
+        "SQL"
+      ],
+      "missing_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL",
+        "Python"
+      ],
+      "all_detected_skills": [
+        "Data Science",
+        "Data Warehousing",
+        "Excel",
+        "Power BI",
+        "SQL",
+        "Tableau"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "data",
+        "sql",
+        "using",
+        "science",
+        "experience"
+      ],
+      "character_count": 1057,
+      "rank": 8
+    },
+    {
+      "candidate_id": "cand_01",
+      "candidate_name": "Jason Miller",
+      "file_name": "candidate_10_jason_mechanical_eng.pdf",
+      "format": "PDF",
+      "composite_score": 1.66,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 0.0,
+      "tfidf_percentage": 4.14,
+      "matched_skills": [],
+      "missing_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL",
+        "Python",
+        "SQL"
+      ],
+      "all_detected_skills": [
+        "CAD",
+        "MATLAB",
+        "Thermodynamics"
+      ],
+      "soft_skills": [
+        "Teamwork"
+      ],
+      "top_shared_terms": [
+        "engineer",
+        "engineering",
+        "using",
+        "experience",
+        "design"
+      ],
+      "character_count": 816,
+      "rank": 9
+    },
+    {
+      "candidate_id": "cand_08",
+      "candidate_name": "Sarah Jenkins",
+      "file_name": "candidate_7_sarah_frontend_dev.docx",
+      "format": "DOCX",
+      "composite_score": 0.86,
+      "signal": "LOW MATCH",
+      "alignment_label": "Low Match",
+      "skill_match_percentage": 0.0,
+      "tfidf_percentage": 2.16,
+      "matched_skills": [],
+      "missing_skills": [
+        "Docker",
+        "FastAPI",
+        "Git",
+        "Kubernetes",
+        "Pandas",
+        "PostgreSQL",
+        "Python",
+        "SQL"
+      ],
+      "all_detected_skills": [
+        "HTML/CSS",
+        "JavaScript",
+        "React",
+        "UI/UX"
+      ],
+      "soft_skills": [],
+      "top_shared_terms": [
+        "design",
+        "high",
+        "experience",
+        "skills",
+        "technical skills"
+      ],
+      "character_count": 735,
+      "rank": 10
+    }
+  ],
+  "skills": {
+    "required_skills": [
+      "Docker",
+      "FastAPI",
+      "Git",
+      "Kubernetes",
+      "Pandas",
+      "PostgreSQL",
+      "Python",
+      "SQL"
+    ],
+    "candidate_skill_frequencies": {
+      "Docker": 5,
+      "FastAPI": 3,
+      "Git": 6,
+      "Kubernetes": 2,
+      "Pandas": 3,
+      "PostgreSQL": 3,
+      "Python": 6,
+      "SQL": 7
+    }
+  },
+  "eda_insights": {
+    "total_raw_records": 10000,
+    "experience_distribution": {
+      "counts": {
+        "0-2 Years": 4220,
+        "3-5 Years": 4765,
+        "6-10 Years": 899,
+        "11-15 Years": 116,
+        "16+ Years": 0
+      },
+      "percentages": {
+        "0-2 Years": 42.2,
+        "3-5 Years": 47.6,
+        "6-10 Years": 9.0,
+        "11-15 Years": 1.2,
+        "16+ Years": 0.0
+      },
+      "median_years": 3.0,
+      "mean_years": 3.1
+    },
+    "category_distribution": {
+      "Technology": 2511,
+      "Data & Analytics": 568,
+      "Healthcare": 488,
+      "Marketing & Sales": 463,
+      "Engineering & Manufacturing": 435,
+      "Creative & Design": 334,
+      "Skilled Trades": 279,
+      "Operations & Supply Chain": 266
+    },
+    "top_technical_skills": {
+      "Communication": 2143,
+      "Problem Solving": 2109,
+      "Sql": 1162,
+      "Leadership": 862,
+      "Python": 731,
+      "Javascript": 641,
+      "Safety": 541,
+      "Java": 513,
+      "Research": 512,
+      "Creativity": 505
+    }
+  },
+  "configuration": {
+    "weights": {
+      "tfidf_weight": 0.4,
+      "skill_weight": 0.6
+    },
+    "thresholds": {
+      "shortlist_threshold": 70.0,
+      "review_threshold": 50.0
+    },
+    "signals": {
+      "shortlist": "SHORTLIST",
+      "review": "REVIEW",
+      "low_match": "LOW MATCH"
+    }
+  }
+}
